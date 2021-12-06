@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'screens/home_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -32,12 +34,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Replace home screen',
-    ),
-    Text(
-      'Replace graph screen',
-    ),
+    HomeScreen(),
     Text(
       'Replace news screen',
     ),
@@ -66,26 +63,19 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
-            backgroundColor: Colors.amber,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart),
-            label: 'Graph',
-            backgroundColor: Colors.amber,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.explore),
             label: 'News',
-            backgroundColor: Colors.amber,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Settings',
-            backgroundColor: Colors.amber,
           ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.black,
+        backgroundColor: Colors.amber,
         onTap: _onItemTapped,
       ),
     );
