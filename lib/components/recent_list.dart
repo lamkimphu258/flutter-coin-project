@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_coin_project/components/db.dart';
 import 'package:flutter_coin_project/models/coin.dart';
 import 'package:flutter_coin_project/screens/detail_screen.dart';
 import 'package:http/http.dart' as http;
@@ -15,10 +16,21 @@ class RecentList extends StatefulWidget {
 
 class _RecentListState extends State<RecentList> {
   late Future<List<Coin>> futureCoin;
-
+  //  Future<List<Coin>> fetchCoin() async {
+  //   final allRows = await dbHelper.queryAllRows();
+  //   if (allRows != null) {
+  //     List<Coin> myList = [];
+  //     for (var i = 0; i < allRows.length; i++) {
+  //       myList.add(Coin.fromJson(allRows[i]));
+  //     }
+  //     return myList;
+  //   } else {
+  //     throw Exception('Failed to load trending coin');
+  //   }
+  // }
   Future<List<Coin>> fetchCoin() async {
     final response = await http.get(Uri.parse(
-        ''));
+        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=1000&page=1&sparkline=false'));
 
     if (response.statusCode == 200) {
       var jsonResponse = jsonDecode(response.body);
@@ -31,7 +43,6 @@ class _RecentListState extends State<RecentList> {
       throw Exception('Failed to load trending coin');
     }
   }
-
   @override
   void initState() {
     super.initState();
@@ -63,7 +74,7 @@ class _RecentListState extends State<RecentList> {
                         children: [
                           Image.network(
                             snapshot.data![index].image,
-                            scale: 5.0,
+                            scale: 6.0,
                           ),
                           SizedBox(
                             child: Text(
@@ -73,12 +84,18 @@ class _RecentListState extends State<RecentList> {
                             ),
                             width: 150,
                           ),
-                          SizedBox(
-                            child: Text(
-                                "2h",
-                                style:
-                                Theme.of(context).textTheme.bodyText2),
-                            width: 100,
+                          Row(
+                            children: [
+                              Text(
+                                  "2h" + " ago",
+                                  style:
+                                  Theme.of(context).textTheme.bodyText2),
+                              IconButton(
+                                icon: const Icon(Icons.delete_forever, color: Colors.grey ),
+                                tooltip: 'Remove',
+                                onPressed: (){}
+                              ),
+                            ],
                           ),
                         ],
                       ),

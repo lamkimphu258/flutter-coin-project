@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_coin_project/components/db.dart';
 import 'package:flutter_coin_project/models/coin.dart';
 import 'package:flutter_coin_project/screens/detail_screen.dart';
 import 'package:http/http.dart' as http;
@@ -86,6 +87,7 @@ class _CoinListState extends State<CoinList> {
                                         MaterialPageRoute(
                                             builder: (context) => DetailScreen(
                                                 coin: snapshot.data![index])));
+                                    print(snapshot.data![index].image);
                                   },
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
