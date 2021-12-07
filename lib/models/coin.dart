@@ -1,7 +1,7 @@
 class Coin {
-  final String name;
-  final String symbol;
-  final String image;
+  final dynamic name;
+  final dynamic symbol;
+  final dynamic image;
   final dynamic currentPrice;
   final dynamic marketCap;
   final dynamic marketCapRank;
@@ -26,30 +26,30 @@ class Coin {
   final dynamic lastUpdated;
 
   Coin({
-    required this.marketCapRank,
-    required this.fullyDilutedValuation,
-    required this.high24h,
-    required this.low24h,
-    required this.priceChange24h,
-    required this.priceChangePercentage24h,
-    required this.marketCapChange24h,
-    required this.marketCapChangePercentage24h,
-    required this.circulatingSupply,
-    required this.totalSupply,
-    required this.maxSupply,
-    required this.ath,
-    required this.athChangePercentage,
-    required this.athDate,
-    required this.atl,
-    required this.atlChangePercentage,
-    required this.atlDate,
-    required this.lastUpdated,
-    required this.name,
-    required this.symbol,
-    required this.image,
-    required this.currentPrice,
-    required this.marketCap,
-    required this.totalVolume,
+    this.marketCapRank,
+    this.fullyDilutedValuation,
+    this.high24h,
+    this.low24h,
+    this.priceChange24h,
+    this.priceChangePercentage24h,
+    this.marketCapChange24h,
+    this.marketCapChangePercentage24h,
+    this.circulatingSupply,
+    this.totalSupply,
+    this.maxSupply,
+    this.ath,
+    this.athChangePercentage,
+    this.athDate,
+    this.atl,
+    this.atlChangePercentage,
+    this.atlDate,
+    this.lastUpdated,
+    this.name,
+    this.symbol,
+    this.image,
+    this.currentPrice,
+    this.marketCap,
+    this.totalVolume,
     this.roi,
   });
 

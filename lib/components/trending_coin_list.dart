@@ -44,21 +44,80 @@ class _TrendingCoinListState extends State<TrendingCoinList> {
       future: futureTrendingCoin,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return ListView.builder(
-              itemCount: snapshot.data!.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+          return Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Padding(
-                          padding: EdgeInsets.all(10),
+                      SizedBox(
                           child: Text(
-                            snapshot.data![index].name,
-                            style: Theme.of(context).textTheme.headline6,
-                          ))
-                    ]);
-              });
+                            'Coin',
+                            style: Theme.of(context).textTheme.headline5,
+                          ),
+                          width: 50),
+                      const SizedBox(width: 200),
+                      SizedBox(
+                        child: Text(
+                          'Rank',
+                          style: Theme.of(context).textTheme.headline5,
+                        ),
+                        width: 70,
+                      ),
+                    ]),
+              ),
+              Expanded(
+                child: ListView.builder(
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    child: Image.network(
+                                      snapshot.data![index].thumb,
+                                    ),
+                                    width: 50,
+                                  ),
+                                  const SizedBox(width: 20),
+                                  SizedBox(
+                                    child: Text(
+                                      snapshot.data![index].name,
+                                      style:
+                                          Theme.of(context).textTheme.headline6,
+                                      textAlign: TextAlign.start,
+                                    ),
+                                    width: 170,
+                                  ),
+                                  const SizedBox(width: 10),
+                                  SizedBox(
+                                    child: Text(
+                                      snapshot.data![index].marketCapRank
+                                          .toString(),
+                                      style:
+                                          Theme.of(context).textTheme.headline6,
+                                      textAlign: TextAlign.start,
+                                    ),
+                                    width: 50,
+                                  ),
+                                ],
+                              ),
+                            )
+                          ]);
+                    }),
+              ),
+            ],
+          );
           //   return Text(snapshot.data!.name);
         } else if (snapshot.hasError) {
           return Text('${snapshot.error}');

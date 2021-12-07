@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_coin_project/components/coin_list.dart';
-import 'package:flutter_coin_project/components/trending_coin_list.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

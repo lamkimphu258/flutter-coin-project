@@ -1,16 +1,22 @@
-# flutter_coin_project
+# Introduction
 
-A new Flutter project.
+This is a Crypto Portfolio Tracker using public API from Coingecko. This app contains 4 screens:
+home screen, trending screen, news screen and recent screen.
 
-## Getting Started
+## Home Screen
 
-This project is a starting point for a Flutter application.
+This screen will list all the available coin icons, coin name and current price of that coin in USD.
+When user click to specific coin, app will navigate theme to detail page of that coin so that user
+can see more information of that coin.
 
-A few resources to get you started if this is your first Flutter project:
+## Trending Screen
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+This screen will show all the trending coin icons, coin name and current rank of that coin.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## News Screen
+
+This screen will show all the news about trading market.
+
+## Recent Screen
+
+This screen will show all the coins which user have just seen.

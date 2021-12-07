@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_coin_project/screens/recent_screen.dart';
+import 'package:flutter_coin_project/screens/trending_screen.dart';
 
 import 'screens/home_screen.dart';
 
@@ -36,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
+    TrendingScreen(),
     Text(
       'Replace news screen',
     ),
@@ -62,14 +64,22 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
+            backgroundColor: Colors.amber,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.trending_up),
+            label: 'Trending',
+            backgroundColor: Colors.amber,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.explore),
             label: 'News',
+            backgroundColor: Colors.amber,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'Settings',
+            label: 'Recents',
+            backgroundColor: Colors.amber,
           ),
         ],
         currentIndex: _selectedIndex,
