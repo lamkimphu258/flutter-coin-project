@@ -15,7 +15,7 @@ class DetailScreen extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
       body: Column(
-        children: [_buildAppBar(context), _buildBody(context)],
+        children: [_buildAppBar(context), Expanded(child: _buildBody(context))],
       ),
     ));
   }
@@ -24,7 +24,7 @@ class DetailScreen extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Padding(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
