@@ -54,43 +54,43 @@ class _CoinListState extends State<CoinList> {
                     children: [
                       Padding(
                           padding: const EdgeInsets.all(10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Image.network(
-                                snapshot.data![index].image,
-                                scale: 5.0,
-                              ),
-                              const SizedBox(width: 10),
-                              SizedBox(
-                                child: Text(
-                                  snapshot.data![index].symbol,
-                                  style: Theme.of(context).textTheme.headline6,
-                                  textAlign: TextAlign.start,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => DetailScreen(
+                                          coin: snapshot.data![index])));
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Image.network(
+                                  snapshot.data![index].image,
+                                  scale: 5.0,
                                 ),
-                                width: 70,
-                              ),
-                              const SizedBox(width: 10),
-                              SizedBox(
-                                child: Text(
-                                    NumberFormat.currency(locale: 'en').format(
-                                        snapshot.data![index].currentPrice),
-                                    style:
-                                        Theme.of(context).textTheme.bodyText2),
-                                width: 100,
-                              ),
-                              const SizedBox(width: 10),
-                              ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => DetailScreen(
-                                                coin: snapshot.data![index])));
-                                  },
-                                  child: const Text('Detail'))
-                            ],
+                                const SizedBox(width: 10),
+                                SizedBox(
+                                  child: Text(
+                                    snapshot.data![index].name,
+                                    style: Theme.of(context).textTheme.headline6,
+                                    textAlign: TextAlign.start,
+                                  ),
+                                  width: 150,
+                                ),
+                                const SizedBox(width: 10),
+                                SizedBox(
+                                  child: Text(
+                                      NumberFormat.currency(locale: 'en').format(
+                                          snapshot.data![index].currentPrice),
+                                      style:
+                                          Theme.of(context).textTheme.bodyText2),
+                                  width: 100,
+                                ),
+                                const SizedBox(width: 10),
+                              ],
+                            ),
                           ))
                     ]);
               });
