@@ -57,8 +57,8 @@ class _TrendingCoinListState extends State<TrendingCoinList> {
                             'Coin',
                             style: Theme.of(context).textTheme.headline5,
                           ),
-                          width: 50),
-                      const SizedBox(width: 200),
+                          width: 60),
+                      const SizedBox(width: 190),
                       SizedBox(
                         child: Text(
                           'Rank',
