@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_coin_project/screens/recent_screen.dart';
 
 import 'screens/home_screen.dart';
 
@@ -38,9 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Text(
       'Replace news screen',
     ),
-    Text(
-      'Replace setting screen',
-    ),
+    RecentScreen(),
   ];
 
   void _onItemTapped(int index) {
