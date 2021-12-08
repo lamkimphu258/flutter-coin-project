@@ -38,9 +38,6 @@ class _MyHomePageState extends State<MyHomePage> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     TrendingScreen(),
-    Text(
-      'Replace news screen',
-    ),
     RecentScreen(),
   ];
 
@@ -69,11 +66,6 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.trending_up),
             label: 'Trending',
-            backgroundColor: Colors.amber,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.explore),
-            label: 'News',
             backgroundColor: Colors.amber,
           ),
           BottomNavigationBarItem(

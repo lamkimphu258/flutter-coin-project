@@ -13,10 +13,7 @@ can see more information of that coin.
 
 This screen will show all the trending coin icons, coin name and current rank of that coin.
 
-## News Screen
-
-This screen will show all the news about trading market.
-
 ## Recent Screen
 
-This screen will show all the coins which user have just seen.
+This screen will show all the coins which user have just seen. Unfortunately, we don't have enough
+time to complete this screen. So we just have a place holder for it.
