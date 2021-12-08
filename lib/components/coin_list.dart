@@ -3,9 +3,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_coin_project/models/coin.dart';
+import 'package:flutter_coin_project/models/recent_coin.dart';
 import 'package:flutter_coin_project/screens/detail_screen.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
 
 class CoinList extends StatefulWidget {
   const CoinList({Key? key}) : super(key: key);
@@ -37,6 +40,23 @@ class _CoinListState extends State<CoinList> {
   void initState() {
     super.initState();
     futureCoin = fetchCoin();
+  }
+
+  Future<Database> initDatabase() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    final database = openDatabase(
+      join(await getDatabasesPath(), 'coin_tracker.db'),
+    );
+    return database;
+  }
+
+  Future<void> insertRecentCoin(database, RecentCoin recentCoin) async {
+    final db = await database;
+    await db.insert(
+      'recent_coin',
+      recentCoin.toMap(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
   }
 
   @override
@@ -81,6 +101,12 @@ class _CoinListState extends State<CoinList> {
                                 padding: const EdgeInsets.all(10),
                                 child: InkWell(
                                   onTap: () {
+                                    var database = initDatabase();
+                                    var recentCoin = RecentCoin(
+                                        image: snapshot.data![index].image,
+                                        name: snapshot.data![index].name,
+                                        visitedAt: DateTime.parse(DateTime.now().toString()));
+                                    insertRecentCoin(database, recentCoin);
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
@@ -88,8 +114,10 @@ class _CoinListState extends State<CoinList> {
                                                 coin: snapshot.data![index])));
                                   },
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Image.network(
                                         snapshot.data![index].image,
@@ -99,7 +127,9 @@ class _CoinListState extends State<CoinList> {
                                       SizedBox(
                                         child: Text(
                                           snapshot.data![index].name,
-                                          style: Theme.of(context).textTheme.headline6,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline6,
                                           textAlign: TextAlign.start,
                                         ),
                                         width: 150,
@@ -107,10 +137,12 @@ class _CoinListState extends State<CoinList> {
                                       const SizedBox(width: 10),
                                       SizedBox(
                                         child: Text(
-                                            NumberFormat.currency(locale: 'en').format(
-                                                snapshot.data![index].currentPrice),
-                                            style:
-                                                Theme.of(context).textTheme.bodyText2),
+                                            NumberFormat.currency(locale: 'en')
+                                                .format(snapshot
+                                                    .data![index].currentPrice),
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyText2),
                                         width: 100,
                                       ),
                                       const SizedBox(width: 10),
