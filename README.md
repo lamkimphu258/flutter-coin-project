@@ -17,3 +17,6 @@ This screen will show all the trending coin icons, coin name and current rank of
 
 This screen will show all the coins which user have just seen. Unfortunately, we don't have enough
 time to complete this screen. So we just have a place holder for it.
+
+## Demo
+https://user-images.githubusercontent.com/51507124/145129445-453b6e92-f82f-4e20-be0f-a0a6b7f2db59.mp4
